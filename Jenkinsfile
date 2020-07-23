@@ -21,7 +21,8 @@ pipeline {
     stage('Start test app') {
         steps {
             powershell(script: """
-            # Start app lien missing!
+            # Start app line missing!
+            docker-compose up -d
             ./scripts/test_container.ps1
             """)
         }
