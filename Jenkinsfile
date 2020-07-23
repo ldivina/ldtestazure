@@ -18,34 +18,5 @@ pipeline {
                 """)
             }
         }
-    stage('Start test app') {
-        steps {
-            powershell(script: """
-            # Start app lien missing!
-            ./scripts/test_container.ps1
-            """)
-        }
-        post {
-            success {
-                echo "app started sucessfully"
-            }
-            failure {
-                echo "App failed to start"
-            }
-        }
-    }
-    stage('Run Tests') {
-        steps {
-            powershell(script: """
-            pytest .tests/test_sample.py
-            """)
-        }
-    }
-    stage('stop test app') {
-        steps {
-            powershell(script: """
-                docker-compose down
-                """)
-        }
     }
 }
